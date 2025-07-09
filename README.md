@@ -1,6 +1,6 @@
 # T-LoRA: Single Image Diffusion Model Customization Without Overfitting
 
-<!-- <a href="https://arxiv.org/abs/2502.06606"><img src="https://img.shields.io/badge/arXiv-2502.06606-b31b1b.svg" height=22.5></a> -->
+<a href="https://arxiv.org/abs/2507.05964"><img src="https://img.shields.io/badge/arXiv-2502.06606-b31b1b.svg" height=22.5></a><!-- <a href="https://arxiv.org/abs/2502.06606"><img src="https://img.shields.io/badge/arXiv-2502.06606-b31b1b.svg" height=22.5></a> -->
 [![License](https://img.shields.io/github/license/AIRI-Institute/al_toolbox)](./LICENSE)
 
 >While diffusion model fine-tuning offers a powerful approach for customizing pre-trained models to generate specific objects, it frequently suffers from overfitting when training samples are limited, compromising both generalization capability and output diversity. This paper tackles the challenging yet most impactful task of adapting a diffusion model using just a single concept image, as single-image customization holds the greatest practical potential. We introduce T-LoRA, a Timestep-Dependent Low-Rank Adaptation framework specifically designed for diffusion model personalization. In our work we show that higher diffusion timesteps are more prone to overfitting than lower ones, necessitating a timestep-sensitive fine-tuning strategy. T-LoRA incorporates two key innovations: (1) a dynamic fine-tuning strategy that adjusts rank-constrained updates based on diffusion timesteps, and (2) a weight parametrization technique that ensures independence between adapter components through orthogonal initialization. Extensive experiments show that T-LoRA and its individual components outperform standard LoRA and other diffusion model personalization techniques. They achieve a superior balance between concept fidelity and text alignment, highlighting the potential of T-LoRA in data-limited and resource-constrained scenarios.
@@ -9,18 +9,18 @@
 
 ![image](docs/teaser.png)
 
-## Updates
+## 📌 Updates
 
 - [08/07/2025] 🔥🔥🔥 T-LoRA release
 
-## Prerequisites
+## 📌 Prerequisites
 
 To run our method, please ensure you meet the following hardware and software requirements:
 - Operating System: Linux
 - NVIDIA GPU + CUDA CuDNN
 - Conda 24.1.0+ or Python 3.11+
 
-## Setup
+## 📌 Setup
 
 * Clone this repo:
 ```bash
@@ -34,7 +34,7 @@ conda env create -f tlora_env.yml
 conda activate tlora
 ```
 
-## Training
+## 📌 Training
 
 You can launch T-LoRA training with the dog-example:
 
@@ -45,7 +45,7 @@ export INSTANCE_DIR="dog_example"
 export OUTPUT_DIR="trained-tlora_dog"
 export API_KEY="your-wandb-api-key"
 
-accelerate launch /home/jovyan/sobolev/vs/t-lora/train.py \
+accelerate launch train.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --train_data_dir=$INSTANCE_DIR \
   --output_dir=$OUTPUT_DIR \
@@ -92,13 +92,13 @@ trained-tlora_dog
         └───hparams.yml
 
 ```
-## Inference
+## 📌 Inference
 
 ```bash
 
 export CONFIG_PATH="trained-tlora_dog/*****-****-dog_example_tortho_lora64/logs/hparams.yml"
 
-python /home/jovyan/sobolev/vs/t-lora/inference.py \
+python inference.py \
   --config_path=$CONFIG_PATH \
   --checkpoint_idx=800 \
   --guidance_scale=5.0 \
@@ -112,14 +112,17 @@ python /home/jovyan/sobolev/vs/t-lora/inference.py \
 This command will generate images in the corresponding checkpoint folder.
 
 
-## Citation
+## 📌 Citation
 
-If you utilize this code in your research, kindly cite our paper:
+If our work assists your research, feel free to give us a star ⭐ and cite us using:
 ```
-@article{soboleva2025tlora,
-  title={T-LoRA: Single Image Diffusion Model Customization Without Overfitting},
-  author={Vera Soboleva and Aibek Alanov and Andrey Kuznetsov and Konstantin Sobolev},
-  journal={},
- year={2025}
+@misc{soboleva2025tlorasingleimagediffusion,
+      title={T-LoRA: Single Image Diffusion Model Customization Without Overfitting}, 
+      author={Vera Soboleva and Aibek Alanov and Andrey Kuznetsov and Konstantin Sobolev},
+      year={2025},
+      eprint={2507.05964},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.05964}, 
 }
 ```
