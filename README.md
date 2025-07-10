@@ -20,6 +20,8 @@ To run our method, please ensure you meet the following hardware and software re
 - NVIDIA GPU + CUDA CuDNN
 - Conda 24.1.0+ or Python 3.11+
 
+🤗 [Diffusers](https://github.com/huggingface/diffusers) library is used as the foundation for our method implementation.
+
 ## 📌 Setup
 
 * Clone this repo:
@@ -36,7 +38,7 @@ conda activate tlora
 
 ## 📌 Training
 
-You can launch T-LoRA training with the dog-example:
+You can launch T-LoRA training with the dog-example sourced from [Dreambooth Dataset](https://github.com/google/dreambooth):
 
 ```bash
 
@@ -111,6 +113,8 @@ python inference.py \
 
 This command will generate images in the corresponding checkpoint folder.
 
+## 🙏 Acknowledgements
+We sincerely thank the 🤗 [Huggingface](https://huggingface.co) community for their open-source code and contributions.
 
 ## 📌 Citation
 
