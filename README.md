@@ -38,7 +38,7 @@ conda activate tlora
 
 ## 📌 Training
 
-You can launch T-LoRA training with the dog-example sourced from [Dreambooth Dataset](https://github.com/google/dreambooth):
+You can launch T-LoRA training with the dog-example sourced from [DreamBooth Dataset](https://github.com/google/dreambooth):
 
 ```bash
 
