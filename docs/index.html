@@ -27,7 +27,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="FusionBrain Lab">
+  <meta property="og:site_name" content="FusionBrain Lab, HSE University, Innopolis University, Lomonosov Moscow State University">
   <!-- TODO: Same as paper title above -->
   <meta property="og:title" content="PAPER_TITLE">
   <!-- TODO: Same as description above -->
@@ -206,18 +206,18 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=M8UdNTQAAAAJ" target="_blank">Vera Soboleva</a>,
+                <a href="https://scholar.google.com/citations?user=M8UdNTQAAAAJ" target="_blank">Vera Soboleva</a><sup>1,2</sup>,
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=MXJTRGoAAAAJ" target="_blank">Aibek Alanov</a>,
+                  <a href="https://scholar.google.com/citations?user=MXJTRGoAAAAJ" target="_blank">Aibek Alanov</a><sup>1,2</sup>,
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=q0lIfCEAAAAJ" target="_blank">Andrey Kuznetsov</a>,
+                    <a href="https://scholar.google.com/citations?user=q0lIfCEAAAAJ" target="_blank">Andrey Kuznetsov</a><sup>1</sup>,
                     <span class="author-block">
-                      <a href="https://scholar.google.com/citations?user=mVExMow&user=mVExMow" target="_blank">Konstantin Sobolev</a><sup>*</sup>
+                      <a href="https://scholar.google.com/citations?user=mVExMow&user=mVExMow" target="_blank">Konstantin Sobolev</a><sup>1,3</sup><sup>*</sup>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">FusionBrain Lab<br>AAAI 2026</span>
+                    <span class="author-block">FusionBrain Lab<sup>1</sup>, HSE University<sup>2</sup>, MSU<sup>3</sup><br>AAAI 2026</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Corresponding Author</small></span>
                   </div>
@@ -291,22 +291,9 @@
               <li>The method is based on the observation that higher (noisier) diffusion timesteps are more vulnerable to overfitting than lower ones;</li>
               <li>Key components:</li>
               <ul>
-                <li>Timestep-dependent LoRA rank masking to restrict concept information injection:</li>
+                <li>Timestep-dependent LoRA rank masking to restrict concept information injection;</li>
 
-                \begin{split}
-                    &W_{t} = W + B_{t} A_{t} = W + B M_{t} A, \ A \in \mathbb{R}^{r \times m}, B \in \mathbb{R}^{n \times r}
-                    \\
-                    &M_t = M_{r(t)} = \mathrm{diag}(1, 1, \dots, 1, 0, 0, \dots, 0) \in \mathbb{R}^{r \times r},
-                    \\
-                    &r(t) = \lfloor (r - r_{min}) \cdot (T-t)/T \rfloor + r_{min}.
-                \end{split}
-
-                <li>Orthogonal initialization for efficient exclusion of LoRA components:</li>
-
-                \begin{equation} 
-                 W_t = W - B_{init}S_{init}M_tA_{init} + BSM_tA,
-                \end{equation} 
-                where $A_{init} =V^T[-r:]$, $B_{init} = U[-r:]$ and $S_{init}=S[-r:]$ are the last SVD components of a random matrix $R = USV^T, R \sim N(0, 1/r)$.
+                <li>Orthogonal initialization for efficient exclusion of LoRA components.</li>
             </ul>
             </ul>
           </div>
@@ -326,44 +313,43 @@
         <div id="results-carousel" class="carousel results-carousel">
           <div class="item">
             <!-- TODO: Replace with your research result images -->
-            <img src="static/images/tlora_flux_1.png" alt="First research result visualization" loading="lazy"/>
+            <img src="static/images/tlora_flux_5.png" alt="First research result visualization" loading="lazy"/>
             <!-- TODO: Replace with description of this result -->
-            <h2 class="subtitle has-text-centered">
-              First image description.
-            </h2>
           </div>
           <div class="item">
             <!-- Your image here -->
-            <img src="static/images/tlora_flux_2.png" alt="Second research result visualization" loading="lazy"/>
-            <h2 class="subtitle has-text-centered">
-              Second image description.
-            </h2>
+            <img src="static/images/tlora_flux_4.png" alt="Second research result visualization" loading="lazy"/>
           </div>
           <div class="item">
             <!-- Your image here -->
             <img src="static/images/tlora_flux_3.png" alt="Third research result visualization" loading="lazy"/>
-            <h2 class="subtitle has-text-centered">
-            Third image description.
-            </h2> 
           </div>
           <div class="item">
             <!-- Your image here -->
-            <img src="static/images/tlora_flux_4.png" alt="Fourth research result visualization" loading="lazy"/>
-            <h2 class="subtitle has-text-centered">
-              Fourth image description.
-            </h2>
+            <img src="static/images/tlora_flux_2.png" alt="Fourth research result visualization" loading="lazy"/>
           </div>
           <div class="item">
             <!-- Your image here -->
-            <img src="static/images/tlora_flux_5.png" alt="Fifth research result visualization" loading="lazy"/>
-            <h2 class="subtitle has-text-centered">
-              Fourth image description.
-            </h2>
+            <img src="static/images/tlora_flux_1.png" alt="Fifth research result visualization" loading="lazy"/>
           </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <div class="columns is-centered">
+            <div class="column is-centered is-four-fifths">
+                  <img src="static/images/flux_results.png" alt="Flux comparison with LoRA"/>
+                  <p class="has-text-centered is-size-6 mt-2">CLIP IS and TS for LoRA, Vanilla T-LoRA, and T-LoRA across dfferent ranks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- End image carousel -->
 
