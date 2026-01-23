@@ -1,6 +1,7 @@
 # T-LoRA: Single Image Diffusion Model Customization Without Overfitting
 
 <a href="https://arxiv.org/abs/2507.05964"><img src="https://img.shields.io/badge/arXiv-2502.06606-b31b1b.svg" height=22.5></a><!-- <a href="https://arxiv.org/abs/2502.06606"><img src="https://img.shields.io/badge/arXiv-2502.06606-b31b1b.svg" height=22.5></a> -->
+<a href="https://controlgenai.github.io/T-LoRA/"><img src="https://img.shields.io/badge/Project-Website-blue" height=22.5><a>
 [![License](https://img.shields.io/github/license/AIRI-Institute/al_toolbox)](./LICENSE)
 
 >While diffusion model fine-tuning offers a powerful approach for customizing pre-trained models to generate specific objects, it frequently suffers from overfitting when training samples are limited, compromising both generalization capability and output diversity. This paper tackles the challenging yet most impactful task of adapting a diffusion model using just a single concept image, as single-image customization holds the greatest practical potential. We introduce T-LoRA, a Timestep-Dependent Low-Rank Adaptation framework specifically designed for diffusion model personalization. In our work we show that higher diffusion timesteps are more prone to overfitting than lower ones, necessitating a timestep-sensitive fine-tuning strategy. T-LoRA incorporates two key innovations: (1) a dynamic fine-tuning strategy that adjusts rank-constrained updates based on diffusion timesteps, and (2) a weight parametrization technique that ensures independence between adapter components through orthogonal initialization. Extensive experiments show that T-LoRA and its individual components outperform standard LoRA and other diffusion model personalization techniques. They achieve a superior balance between concept fidelity and text alignment, highlighting the potential of T-LoRA in data-limited and resource-constrained scenarios.
@@ -10,7 +11,7 @@
 ![image](docs/teaser.png)
 
 ## 📌 Updates
-
+- [08/11/2025] 🔥🔥🔥 T-LoRA accepted to AAAI 2026
 - [08/07/2025] 🔥🔥🔥 T-LoRA release
 
 ## 📌 Prerequisites
