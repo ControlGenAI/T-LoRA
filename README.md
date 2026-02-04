@@ -11,7 +11,8 @@
 ![image](docs/teaser.png)
 
 ## 📌 Updates
-- [08/11/2025] 🔥🔥🔥 T-LoRA accepted to AAAI 2026
+- [08/11/2025] 🚀🚀🚀 T-LoRA on FLUX.1-dev release
+- [08/11/2025] 🎉🎉🎉 T-LoRA accepted to AAAI 2026
 - [08/07/2025] 🔥🔥🔥 T-LoRA release
 
 ## 📌 Prerequisites
