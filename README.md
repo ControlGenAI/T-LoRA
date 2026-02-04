@@ -23,7 +23,93 @@ To run our method, please ensure you meet the following hardware and software re
 
 🤗 [Diffusers](https://github.com/huggingface/diffusers) library is used as the foundation for our method implementation.
 
-## 📌 Setup
+
+## T-LoRA on FLUX.1-dev
+
+The extended version of our paper includes additional results for the FLUX.1-dev model. [Here](https://github.com/ControlGenAI/T-LoRA/tree/main/flux) we provide code for this experiments. Below is an example demonstrating how to train T-LoRA and run inference with this model.
+
+![image](docs/flux.png)
+
+### 📌 Setup
+
+* Clone this repo:
+```bash
+git clone https://github.com/ControlGenAI/T-LoRA.git
+cd T-LoRA/flux
+```
+
+* Install requirements
+```bash
+pip install -r requirements.txt
+```
+
+### Training
+
+You can launch T-LoRA training with the dog-example sourced from [DreamBooth Dataset](https://github.com/google/dreambooth):
+
+```bash
+
+export MODEL_NAME="black-forest-labs/FLUX.1-dev"
+export INSTANCE_DIR="dog_example"
+export OUTPUT_DIR="trained-flux-tlora_dog"
+
+accelerate launch run.py \
+  --pretrained_model_name_or_path=$MODEL_NAME \
+  --train_data_dir=$INSTANCE_DIR \
+  --output_dir=$OUTPUT_DIR \
+  --mask_dir=None \ # provide a path to subject mask dir if you want masked loss
+  --class_name="dog" \
+  --placeholder_token="sks" \
+  --max_train_steps=1000 \
+  --checkpointing_steps=100 \
+  --validation_prompt="a {0} in the jungle#a {0} in a cozy living room" \
+  --one_image="02.jpg" \ # remove if you prefer full dataset training
+  --tlora \
+  --rank=32 \
+  --min_rank=1 \
+```
+
+We are utilizing the following flags in the command mentioned above
+
+* `mask_dir` here you can provide a folder with the target image masks to further disentangle the subject from the background. Masks can be obtained via [this code](https://github.com/fenghora/personalize-anything/tree/main/scripts). Mask filenames must match their corresponding image filenames. This is recommended for fine-tuning for people.
+* `validation_prompts` - this flag allows you to specify a string of validation prompts separated by #, enabling the script to perform several validation inference runs.
+* `one_image="00.jpg"`- this flag initiates training using a single selected image. Remove this flag if you prefer to train on the full dataset.
+
+The optimal number of training steps may vary depending on the specific concept.
+
+
+After the training you will obtain the experiment folder in the following structure:
+
+```
+trained-tlora_dog
+└───*****-****-dog_example_tlora32
+    └───checkpoint-100
+        └───lora.pt
+    └───checkpoint-200
+    │   ...
+    │
+    └───logs
+        └───hparams.yml
+
+```
+
+### Inference
+
+```bash
+
+export EXP_PATH="trained-tlora_dog/*****-****-dog_example_tlora32"
+
+python /home/jovyan/sobolev/vs/t-lora/inference.py \
+  --exp=$EXP_PATH \
+  --checkpoint_idx=800 \
+  --prompts="a {0} riding a bike#a {0} dressed as a ballerina#a {0} dressed in a superhero cape, soaring through the skies above a bustling city during a sunset" \  # a string of prompts separated by #
+```
+
+This command will generate images in the corresponding checkpoint folder.
+
+## T-LoRA on SD-XL
+Below is an example demonstrating how to train T-LoRA and run inference with SD-XL.
+### 📌 Setup
 
 * Clone this repo:
 ```bash
@@ -37,7 +123,7 @@ conda env create -f tlora_env.yml
 conda activate tlora
 ```
 
-## 📌 Training
+### 📌 Training
 
 You can launch T-LoRA training with the dog-example sourced from [DreamBooth Dataset](https://github.com/google/dreambooth):
 
@@ -95,7 +181,7 @@ trained-tlora_dog
         └───hparams.yml
 
 ```
-## 📌 Inference
+### 📌 Inference
 
 ```bash
 
