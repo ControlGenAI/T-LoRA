@@ -100,7 +100,7 @@ trained-tlora_dog
 
 export EXP_PATH="trained-tlora_dog/*****-****-dog_example_tlora32"
 
-python /home/jovyan/sobolev/vs/t-lora/inference.py \
+python run_inference.py \
   --exp=$EXP_PATH \
   --checkpoint_idx=800 \
   --prompts="a {0} riding a bike#a {0} dressed as a ballerina#a {0} dressed in a superhero cape, soaring through the skies above a bustling city during a sunset" \  # a string of prompts separated by #
