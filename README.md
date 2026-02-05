@@ -11,9 +11,9 @@
 ![image](docs/teaser.png)
 
 ## 📌 Updates
-- [04/02/2026] 🚀🚀🚀 T-LoRA on FLUX.1-dev release
-- [08/11/2025] 🎉🎉🎉 T-LoRA accepted to AAAI 2026
-- [08/07/2025] 🔥🔥🔥 T-LoRA release
+- [04/02/2026] 🚀 T-LoRA on FLUX.1-dev release
+- [08/11/2025] 🎉 T-LoRA accepted to AAAI 2026
+- [08/07/2025] 🔥 T-LoRA release
 
 ## 📌 Prerequisites
 
@@ -164,8 +164,8 @@ We are utilizing the following flags in the command mentioned above
 * use `trainer_type="ortho_lora"` if you prefer to train T-LoRA and `trainer_type="lora"` in case you want to train Vanilla T-LoRA. `sig_type="last"` flag ensures that training starts from weights initialized with the last singular values of the matrices.
 * `one_image="00.jpg"`- this flag initiates training using a single selected image. Remove this flag if you prefer to train on the full dataset.
 
-The optimal number of training steps may vary depending on the specific concept. However, based on our experiments, 800 iterations generally yield good results for many concepts.
-We conducted our experiments using a single GPU setup on the Nvidia A100. Training each individual model is expected to take approximately 30 minutes.
+The optimal number of training steps may vary depending on the specific concept.
+We conducted our experiments using a single GPU setup on the Nvidia Н100. Training each individual model is expected to take approximately 30 minutes.
 
 
 After the training you will obtain the experiment folder in the following structure:
