@@ -1,0 +1,8 @@
+torch
+torchvision
+diffusers[torch]
+transformers
+accelerate
+peft
+safetensors
+prodigyopt
